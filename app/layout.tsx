@@ -1,5 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import SubjectsPlaceholder from "@/components/subjects-placeholder"
+import TablePlaceholder from '@/components/table-placeholder'
 
 export const metadata = {
   metadataBase: new URL('https://postgres-prisma.vercel.app'),
@@ -21,7 +23,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.variable}>{children}</body>
+      <body className={inter.variable}>
+        <SubjectsPlaceholder />
+        {children}
+      </body>
     </html>
   )
 }

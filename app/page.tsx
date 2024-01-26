@@ -1,6 +1,8 @@
+import Image from 'next/image'
 import { Suspense } from 'react'
 import Table from '@/components/table'
 import TablePlaceholder from '@/components/table-placeholder'
+
 
 export const dynamic = 'force-dynamic'
 
@@ -13,6 +15,41 @@ export default function Home() {
       <Suspense fallback={<TablePlaceholder />}>
         <Table />
       </Suspense>
+      <Image
+        src="/Science.svg"
+        alt="Open Book Icon"
+        className='h-10 aspect-square'
+        width={100}
+        height={24}
+      />
+      <Image
+        src="/Mathematics.svg"
+        alt="Open Book Icon"
+        className='h-10 aspect-square'
+        width={100}
+        height={24}
+      />
+      <Image
+        src="/Geography.svg"
+        alt="Open Book Icon"
+        className='h-10 aspect-square'
+        width={100}
+        height={24}
+      />
+      <Image
+        src="/History.svg"
+        alt="Open Book Icon"
+        className='h-10 aspect-square'
+        width={100}
+        height={24}
+      />
+      <Image
+        src="/English.svg"
+        alt="Open Book Icon"
+        className='h-10 aspect-square'
+        width={100}
+        height={24}
+      />
     </main>
   )
 }
