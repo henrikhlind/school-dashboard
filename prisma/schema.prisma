@@ -18,3 +18,33 @@ model users {
   image     String
   createdAt DateTime @default(now())
 }
+
+model Student {
+  id              Int               @id @default(autoincrement())
+  name            String
+  email           String
+  StudentSubjects StudentSubjects[]
+}
+
+model StudentSubjects {
+  id        Int     @id @default(autoincrement())
+  student   Student @relation(fields: [studentId], references: [id])
+  studentId Int
+  subject   Subject @relation(fields: [subjectId], references: [id])
+  subjectId Int
+}
+
+model Subject {
+  id              Int               @id @default(autoincrement())
+  name            String
+  teacherId       Teacher           @relation(fields: [teacher], references: [id])
+  teacher         Int
+  StudentSubjects StudentSubjects[]
+}
+
+model Teacher {
+  id      Int       @id @default(autoincrement())
+  name    String
+  email   String
+  subject Subject[]
+}
