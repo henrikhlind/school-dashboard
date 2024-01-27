@@ -24,23 +24,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className=''>
-      <body className={'min-h-screen w-full' + inter.variable}>
-        <header className='w-screen bg-gray-100/40 h-16 flex border-b'>
-          <div className="w-72 flex items-center justify-center h-full border-r">
-            <Link className="" href="#">
-              <span className="text-2xl font-semibold">Teacher Dashboard</span>
+      <body className={'flex min-h-screen w-full flex-col' + inter.variable}>
+        <div className="w-72 hidden border-r bg-gray-100/40 lg:block">
+          <div className="flex h-14 items-center border-b px-6">
+            <Link className="flex items-center gap-2 font-semibold" href="#">
+              <span className="">Teacher Dashboard</span>
             </Link>
           </div>
-        </header>
-        <div className="flex">
-          <div className="h-[calc(100vh-4rem)] w-72 bg-gray-100/40 border-r">
-            <Suspense fallback={<SubjectsPlaceholder />}>
-              <Subjects />
-            </Suspense>
-          </div>
-          <div className="w-min h-[calc(100vh-4rem)]">
-            {children}
-          </div>
+          <Suspense fallback={<SubjectsPlaceholder />}>
+            <Subjects />
+          </Suspense>
+        </div>
+        <div className="">
+          <header className='flex h-14 max-w-screen items-center gap-4 border-b bg-gray-100/40 px-6'></header>
+          {children}
         </div>
       </body>
     </html>

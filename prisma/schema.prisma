@@ -19,7 +19,7 @@ model users {
   createdAt DateTime @default(now())
 }
 
-model student {
+model students {
   id              Int               @id @default(autoincrement())
   name            String
   email           String
@@ -27,24 +27,24 @@ model student {
 }
 
 model studentSubjects {
-  id        Int     @id @default(autoincrement())
-  student   student @relation(fields: [studentId], references: [id])
+  id        Int      @id @default(autoincrement())
+  student   students @relation(fields: [studentId], references: [id])
   studentId Int
-  subject   subject @relation(fields: [subjectId], references: [id])
+  subject   subjects @relation(fields: [subjectId], references: [id])
   subjectId Int
 }
 
-model subject {
+model subjects {
   id              Int               @id @default(autoincrement())
   name            String
-  teacherId       teacher           @relation(fields: [teacher], references: [id])
+  teacherId       teachers          @relation(fields: [teacher], references: [id])
   teacher         Int
   StudentSubjects studentSubjects[]
 }
 
-model teacher {
-  id      Int       @id @default(autoincrement())
+model teachers {
+  id      Int        @id @default(autoincrement())
   name    String
   email   String
-  subject subject[]
+  subject subjects[]
 }
