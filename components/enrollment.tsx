@@ -21,7 +21,7 @@ export default async function Enrollment(props: any) {
                 </thead>
                 <tbody>
                     {students.map(async (student: any) => (
-                        <tr className='hover:bg-gray-100/40 transition-all duration-100'>
+                        <tr className='hover:bg-gray-100/40 transition-all duration-100' key={student.id}>
                             <td className='p-4'>{student.id}</td>
                             <td className='p-4 font-medium'>{(await prisma.students.findUnique({where: {id: student.id}}))?.name}</td>
                             <td className='p-4'>{(await prisma.students.findUnique({where: {id: student.id}}))?.email}</td>
