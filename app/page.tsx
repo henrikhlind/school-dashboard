@@ -1,15 +1,12 @@
 import Image from 'next/image'
 import { Suspense } from 'react'
-import Table from '@/components/table'
-import TablePlaceholder from '@/components/table-placeholder'
-
 
 export const dynamic = 'force-dynamic'
 
 export default function Home() {
   return (
     <main className="flex flex-1 flex-col gap-4 p-4 w-[calc(100vw-18rem)] h-full">
-      <h1 className='font-semibold text-2xl'>Naturfag</h1>
+      <h1 className='font-semibold text-2xl'>Hjem</h1>
       {/* <Image
         src="/English.svg"
         alt="Open Book Icon"
