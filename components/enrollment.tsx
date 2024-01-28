@@ -25,7 +25,7 @@ export default async function Enrollment(props: any) {
                             <td className='p-4'>{student.id}</td>
                             <td className='p-4 font-medium'>{(await prisma.students.findUnique({where: {id: student.id}}))?.name}</td>
                             <td className='p-4'>{(await prisma.students.findUnique({where: {id: student.id}}))?.email}</td>
-                            <td className='p-4'>{student.grade}</td>
+                            <td className='p-4'>{student.grade ?? 'Ingen karakter'}</td>
                             <td className="p-4">
                                 <button className="bg-gray-900 rounded-lg p-2 w-full text-white text-sm font-medium">Endre karakter </button>
                             </td>
