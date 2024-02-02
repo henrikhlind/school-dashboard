@@ -2,10 +2,10 @@
  
 import { usePathname } from 'next/navigation'
 import Link from "next/link"
-import { LuBookOpen } from "react-icons/lu";
+import { LuBookOpen, LuLoader } from "react-icons/lu";
 import { Key } from 'react';
 
-export default async function Subjects(props: any) {
+export default function Subjects(props: any) {
     const pathname = usePathname()
     
     return (
@@ -14,11 +14,11 @@ export default async function Subjects(props: any) {
             <Link
                 key={subject.id}
                 className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-gray-900 ${
-                    pathname === '/' + subject.name.toLowerCase() ? 'bg-gray-100 text-gray-900' : 'text-gray-500'
+                    pathname === '/subjects/' + subject.name.toLowerCase() ? 'bg-gray-100 text-gray-900' : 'text-gray-500'
                 }`}
-                href={"/" + subject.name.toLowerCase()}
+                href={"/subjects/" + subject.name.toLowerCase()}
             >
-                <LuBookOpen />{subject.name}
+                <LuBookOpen />{subject.name} {/* <LuLoader className="animate-spin" /> */}
             </Link>
         ))}
     </nav>

@@ -5,7 +5,6 @@ import Subjects from "@/components/subjects"
 import { Suspense } from 'react'
 import Link from 'next/link'
 import prisma from '@/lib/prisma'
-import StudentModal from '@/components/student-modal'
 
 export const metadata = {
   title: 'Skoleoversikt',
