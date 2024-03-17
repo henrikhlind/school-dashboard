@@ -1,4 +1,5 @@
 import prisma from '@/lib/prisma'
+import GradeButton from '../grade/grade-button'
 
 export default async function Enrollment(props: any) {
     const students = await prisma.enrollment.findMany({
@@ -12,7 +13,7 @@ export default async function Enrollment(props: any) {
 
     return (
         <div className="border shadow-sm rounded-lg text-sm w-fit">
-            <table className="table-fixed">
+            <table className="table-fixed 2xl:w-full">
                 <thead className="border-b text-left text-gray-500">
                     <tr>
                         <th className="w-20 font-normal p-4">#</th>
@@ -39,7 +40,7 @@ export default async function Enrollment(props: any) {
                                 <td className='p-4'>{(await prisma.students.findUnique({where: {id: student.studentId}}))?.email}</td>
                                 <td className='p-4'>{student.grade != 0 ? student.grade : 'Ingen karakter'}</td>
                                 <td className="p-4">
-                                    <button className="bg-gray-900 rounded-lg p-2 w-full text-white text-sm font-medium">Endre karakter </button>
+                                <GradeButton subjectId={props.subjectId} studentId={student.studentId} />
                                 </td>
                             </tr>
                         ))

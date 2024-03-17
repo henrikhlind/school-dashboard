@@ -1,7 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import SubjectsPlaceholder from "@/components/subjects-placeholder"
-import Subjects from "@/components/subjects"
+import SubjectsPlaceholder from "@/components/subjects/subjects-placeholder"
+import Subjects from "@/components/subjects/subjects"
 import { Suspense } from 'react'
 import Link from 'next/link'
 import prisma from '@/lib/prisma'

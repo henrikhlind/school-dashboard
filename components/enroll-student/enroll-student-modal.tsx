@@ -1,10 +1,11 @@
 import { usePathname } from 'next/navigation'
-import { useFormState } from 'react-dom'
-import { useFormStatus } from 'react-dom'
+import { useFormState, useFormStatus } from 'react-dom'
 import { addStudent } from "@/app/actions"
+import { useEffect } from 'react'
 
 const initialState = {
   message: '',
+  success: false
 }
 function SubmitButton() {
     const { pending } = useFormStatus()
@@ -16,16 +17,22 @@ function SubmitButton() {
     )
 }
 
-export default function StudentModal(props: { subjectId: number}){
+export default function AddStudentModal({ subjectId, setHideModal }: { subjectId: number, setHideModal: (hide: boolean) => void }) {
     const [state, formAction] = useFormState(addStudent, initialState)
     const pathname = usePathname()
+
+    useEffect(() => {
+        if (state?.success) {
+            setHideModal(true);
+        }
+    }, [state?.success]);
 
     return (
         <div className="bg-white rounded-lg p-4 w-80 h-fit">
             <form className="flex flex-col gap-4" action={formAction}>
-                <label htmlFor="id">Elev ID</label>
-                <input type="number" name="studentId" className="border rounded-lg p-2 focus:outline-none" required/>
-                <input type="number" name="subjectId" className="hidden" value={props.subjectId} readOnly/>
+                <span>Legg til elev i klassen</span>
+                <input type="number" name="studentId" placeholder='Elev ID' className="border rounded-lg p-2 focus:outline-none" required/>
+                <input type="number" name="subjectId" className="hidden" value={subjectId} readOnly/>
                 <input type="number" name="path" className="hidden" value={pathname} readOnly/>
                 < SubmitButton />
                 <p className=''>
